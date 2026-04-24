@@ -1,0 +1,34 @@
+data:
+  # Update this path to point to your CheXpert-v1.0-small directory
+  data_dir: "/content/drive/MyDrive/CheXpert-v1.0-small"
+  train_csv: "train.csv"
+  valid_csv: "valid.csv"
+  image_size: 224
+  num_workers: 2
+
+  # The 5 competition pathologies
+  target_labels:
+    - "Atelectasis"
+    - "Cardiomegaly"
+    - "Consolidation"
+    - "Edema"
+    - "Pleural Effusion"
+
+training:
+  batch_size: 32
+  epochs: 5
+  learning_rate: 0.0001
+  weight_decay: 0.00001
+  scheduler: "cosine"
+  mixed_precision: true
+
+model:
+  backbone: "densenet121"
+  pretrained: true
+  num_classes: 5
+
+checkpointing:
+  save_dir: "/content/drive/MyDrive/chexpert_checkpoints"
+  save_best_only: true
+
+seed: 42
